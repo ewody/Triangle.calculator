@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Augmentez la largeur du conteneur pour les champs plus larges */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.triangle-image {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+    max-width: 200px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.wide-input {
+    width: calc(100% - 20px); /* Assurez-vous que les champs remplissent presque toute la largeur */
+    max-width: none; /* Supprimez la largeur maximale par défaut */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 45%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"]:nth-child(2) {
+    background-color: #dc3545;
+}
+
+button[type="button"]:nth-child(2):hover {
+    background-color: #c82333;
+}
