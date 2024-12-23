@@ -1,44 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triangle Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Triangle Calculator</title>
+  
+  <!-- On peut toujours utiliser Font Awesome si on souhaite des icônes ailleurs,
+       sinon vous pouvez retirer ce lien. -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2DhKNp1/8Yfly00l1d3PEk32oA8VzW5T0a3MWBYdZJvWc0FhXp9LiTLQfo5w/wx7A==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+  />
+
+  <!-- Ton fichier CSS principal -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <div class="container">
-        <h1>Triangle Calculator</h1>
-        <img src="images/triangle.png" alt="Diagramme de triangle" class="triangle-image">
-        <form id="triangleForm">
-            <label for="coteA">Côté a (Hypoténuse) :</label>
-            <input type="number" id="coteA" name="coteA" class="wide-input">
-            
-            <label for="coteB">Côté b :</label>
-            <input type="number" id="coteB" name="coteB" class="wide-input">
-            
-            <label for="coteC">Côté c :</label>
-            <input type="number" id="coteC" name="coteC" class="wide-input">
-            
-            <label for="angleA">Angle A (90°) :</label>
-            <input type="number" id="angleA" name="angleA" value="90" readonly class="wide-input">
-            
-            <label for="angleB">Angle B :</label>
-            <input type="number" id="angleB" name="angleB" class="wide-input">
-            
-            <label for="angleC">Angle C :</label>
-            <input type="number" id="angleC" name="angleC" class="wide-input">
+  <div class="container">
+    <h1>Triangle Calculator</h1>
+    
+    <img 
+      src="images/triangle.png" 
+      alt="Diagramme de triangle" 
+      class="triangle-image"
+    />
 
-            <!-- Nouveau champ pour l'altitude -->
-            <label for="altitude">Altitude (depuis l'angle A) :</label>
-            <input type="number" id="altitude" name="altitude" class="wide-input" readonly>
+    <form id="triangleForm">
+      <!-- Champ : Hypoténuse -->
+      <label for="coteA">Côté a (Hypoténuse) :</label>
+      <input 
+        type="number" 
+        id="coteA" 
+        name="coteA" 
+        class="wide-input"
+      />
 
-            <div class="button-container">
-                <button type="button" onclick="calculate()">Calculer</button>
-                <button type="button" onclick="clearForm()">Effacer</button>
-            </div>
-        </form>
-    </div>
-    <script src="script.js"></script>
+      <!-- Champ : Côté b -->
+      <label for="coteB">Côté b :</label>
+      <input 
+        type="number" 
+        id="coteB" 
+        name="coteB" 
+        class="wide-input"
+      />
+
+      <!-- Champ : Côté c -->
+      <label for="coteC">Côté c :</label>
+      <input 
+        type="number" 
+        id="coteC" 
+        name="coteC" 
+        class="wide-input"
+      />
+
+      <!-- Angle A (90°) -->
+      <label for="angleA">Angle A (90°) :</label>
+      <input 
+        type="number" 
+        id="angleA" 
+        name="angleA" 
+        value="90" 
+        readonly 
+        class="wide-input"
+      />
+
+      <!-- Angle B -->
+      <label for="angleB">Angle B :</label>
+      <input 
+        type="number" 
+        id="angleB" 
+        name="angleB" 
+        class="wide-input"
+      />
+
+      <!-- Angle C -->
+      <label for="angleC">Angle C :</label>
+      <input 
+        type="number" 
+        id="angleC" 
+        name="angleC" 
+        class="wide-input"
+      />
+
+      <!-- Altitude depuis l'angle A -->
+      <label for="altitude">Altitude (depuis l'angle A) :</label>
+      <input 
+        type="number" 
+        id="altitude" 
+        name="altitude" 
+        class="wide-input" 
+        readonly
+      />
+
+      <!-- Boutons Calculer et Effacer -->
+      <div class="button-container">
+        <button 
+          type="button" 
+          onclick="calculate()"
+        >
+          Calculer
+        </button>
+        <button 
+          type="button" 
+          onclick="clearForm()"
+        >
+          Effacer
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Ton script JS -->
+  <script src="script.js"></script>
 </body>
 </html>
