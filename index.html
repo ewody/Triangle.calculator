@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Triangle Calculator</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Triangle Calculator</h1>
-    <img src="images/triangle.png" alt="Diagramme de triangle" class="triangle-image">
+    <div class="container">
+        <h1>Triangle Calculator</h1>
+        <img src="images/triangle.png" alt="Diagramme de triangle" class="triangle-image">
+        <form id="triangleForm">
+            <label for="coteA">Côté a (Hypoténuse) :</label>
+            <input type="number" id="coteA" name="coteA" class="wide-input">
+            
+            <label for="coteB">Côté b :</label>
+            <input type="number" id="coteB" name="coteB" class="wide-input">
+            
+            <label for="coteC">Côté c :</label>
+            <input type="number" id="coteC" name="coteC" class="wide-input">
+            
+            <label for="angleA">Angle A (90°) :</label>
+            <input type="number" id="angleA" name="angleA" value="90" readonly class="wide-input">
+            
+            <label for="angleB">Angle B :</label>
+            <input type="number" id="angleB" name="angleB" class="wide-input">
+            
+            <label for="angleC">Angle C :</label>
+            <input type="number" id="angleC" name="angleC" class="wide-input">
 
-    <!-- Formulaire -->
-    <form id="triangleForm">
-      <label for="coteA">Côté a (Hypoténuse) :</label>
-      <input type="number" id="coteA" class="wide-input">
+            <!-- Nouveau champ pour l'altitude -->
+            <label for="altitude">Altitude (depuis l'angle A) :</label>
+            <input type="number" id="altitude" name="altitude" class="wide-input" readonly>
 
-      <label for="coteB">Côté b :</label>
-      <input type="number" id="coteB" class="wide-input">
-
-      <label for="coteC">Côté c :</label>
-      <input type="number" id="coteC" class="wide-input">
-
-      <label for="angleA">Angle A (90°) :</label>
-      <input type="number" id="angleA" value="90" readonly class="wide-input">
-
-      <label for="angleB">Angle B :</label>
-      <input type="number" id="angleB" class="wide-input">
-
-      <label for="angleC">Angle C :</label>
-      <input type="number" id="angleC" class="wide-input">
-
-      <label for="altitude">Altitude (depuis A) :</label>
-      <input type="number" id="altitude" class="wide-input" readonly>
-    </form>
-
-    <!-- Boutons SANS onclick -->
-    <div class="button-container">
-      <button id="calculateBtn">Calculer</button>
-      <button id="clearBtn">Effacer</button>
+            <div class="button-container">
+                <button type="button" onclick="calculate()">Calculer</button>
+                <button type="button" onclick="clearForm()">Effacer</button>
+            </div>
+        </form>
     </div>
-  </div>
-
-  <!-- Script tout en bas, pour que le DOM soit déjà chargé -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
