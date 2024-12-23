@@ -1,19 +1,24 @@
+/* ===== 1. Style Global ===== */
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
+    /* Centrer le conteneur verticalement et horizontalement */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
+    background-color: #2C2C2C; /* Fond sombre */
+    color: #FFFFFF;           /* Texte en blanc */
 }
 
+/* ===== 2. Conteneur principal ===== */
 .container {
-    background: white;
+    background-color: #3A3A3A; /* Gris foncé pour contraster avec le fond */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 350px; /* Augmentez la largeur du conteneur pour les champs plus larges */
+    width: 350px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 h1 {
@@ -29,6 +34,8 @@ h1 {
     height: auto;
     width: 100%;
     max-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 form {
@@ -38,44 +45,58 @@ form {
 
 label {
     margin: 10px 0 5px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 input {
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: none; 
     border-radius: 4px;
+    background-color: #4A4A4A; 
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: 2px solid #007bff; /* Couleur de focus */
 }
 
 .wide-input {
-    width: calc(100% - 20px); /* Assurez-vous que les champs remplissent presque toute la largeur */
-    max-width: none; /* Supprimez la largeur maximale par défaut */
+    width: calc(100% - 20px);
+    max-width: none;
 }
 
 .button-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 button {
     padding: 10px;
-    background-color: #007bff;
-    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     width: 45%;
+    transition: background-color 0.2s ease-in-out;
+    color: #FFFFFF;
 }
 
-button:hover {
+/* Bouton Calculer (bleu) */
+button[type="button"]:first-child {
+    background-color: #007bff;
+}
+button[type="button"]:first-child:hover {
     background-color: #0056b3;
 }
 
+/* Bouton Effacer (rouge) */
 button[type="button"]:nth-child(2) {
     background-color: #dc3545;
 }
-
 button[type="button"]:nth-child(2):hover {
     background-color: #c82333;
 }
