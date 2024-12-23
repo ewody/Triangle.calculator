@@ -1,8 +1,7 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Triangle Calculator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,6 +10,7 @@
     <h1>Triangle Calculator</h1>
     <img src="images/triangle.png" alt="Diagramme de triangle" class="triangle-image">
 
+    <!-- Formulaire -->
     <form id="triangleForm">
       <label for="coteA">Côté a (Hypoténuse) :</label>
       <input type="number" id="coteA" class="wide-input">
@@ -34,12 +34,14 @@
       <input type="number" id="altitude" class="wide-input" readonly>
     </form>
 
-    <!-- On se contente d'ajouter des ID pour les boutons, sans onclick -->
-    <button id="calculateBtn">Calculer</button>
-    <button id="clearBtn">Effacer</button>
+    <!-- Boutons SANS onclick -->
+    <div class="button-container">
+      <button id="calculateBtn">Calculer</button>
+      <button id="clearBtn">Effacer</button>
+    </div>
   </div>
 
-  <!-- Script appelé tout à la fin, pour être sûr que le DOM soit déjà chargé -->
+  <!-- Script tout en bas, pour que le DOM soit déjà chargé -->
   <script src="script.js"></script>
 </body>
 </html>
