@@ -1,6 +1,8 @@
+/********************************
+ *  1) CALCUL DES PARAMÈTRES DU TRIANGLE
+ ********************************/
 function calculate() {
-    // Récupérer les valeurs entrées
-    let a = parseFloat(document.getElementById('coteA').value); // hypoténuse
+    let a = parseFloat(document.getElementById('coteA').value); // Hypoténuse
     let b = parseFloat(document.getElementById('coteB').value);
     let c = parseFloat(document.getElementById('coteC').value);
     let angleB = parseFloat(document.getElementById('angleB').value);
@@ -15,7 +17,7 @@ function calculate() {
 
     // 1) On connaît b et c => calculer a, angles B et C
     if (b !== undefined && c !== undefined) {
-        const aCalc = Math.sqrt(b*b + c*c); // hypothénuse
+        const aCalc = Math.sqrt(b*b + c*c); // Hypoténuse
         document.getElementById('coteA').value = aCalc.toFixed(2);
         a = aCalc;
 
@@ -27,7 +29,6 @@ function calculate() {
     }
     // 2) On connaît a (hypoténuse) et b => calculer c, angles
     else if (a !== undefined && b !== undefined) {
-        // c = sqrt(a² - b²) si a > b
         if (b < a) {
             const cCalc = Math.sqrt(a*a - b*b);
             document.getElementById('coteC').value = cCalc.toFixed(2);
@@ -84,28 +85,29 @@ function calculate() {
         document.getElementById('coteA').value = aCalc.toFixed(2);
         a = aCalc;
 
-        const cCalc = Math.sqrt(aCalc*aCalc - b*b); 
+        const cCalc = Math.sqrt(aCalc*aCalc - b*b);
         document.getElementById('coteC').value = cCalc.toFixed(2);
         c = cCalc;
 
         document.getElementById('angleC').value = (90 - angleB).toFixed(2);
     }
-    // etc. => Tu peux continuer les autres combinaisons…
+    // etc. => on peut compléter pour d’autres combinaisons…
 
     else {
         alert("Veuillez remplir au moins deux champs appropriés (dont la cohérence).");
     }
 
     // === CALCUL DE L'ALTITUDE (depuis l'angle droit A) ===
-    //   altitude = (b*c)/a  si a, b, c valides
     if (a > 0 && b > 0 && c > 0) {
         const altitude = (b * c) / a;
         document.getElementById('altitude').value = altitude.toFixed(2);
     }
 }
 
+/***************************
+ *  2) EFFACER LE FORMULAIRE 
+ ***************************/
 function clearForm() {
     document.getElementById('triangleForm').reset();
-    // on reset aussi l'altitude
     document.getElementById('altitude').value = '';
 }
