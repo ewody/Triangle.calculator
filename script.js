@@ -1,111 +1,58 @@
-function calculate() {
-    // Récupérer les valeurs entrées
-    let a = parseFloat(document.getElementById('coteA').value); // hypoténuse
-    let b = parseFloat(document.getElementById('coteB').value);
-    let c = parseFloat(document.getElementById('coteC').value);
-    let angleB = parseFloat(document.getElementById('angleB').value);
-    let angleC = parseFloat(document.getElementById('angleC').value);
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // On récupère nos éléments
+  const coteA   = document.getElementById('coteA');
+  const coteB   = document.getElementById('coteB');
+  const coteC   = document.getElementById('coteC');
+  const angleA  = document.getElementById('angleA');
+  const angleB  = document.getElementById('angleB');
+  const angleC  = document.getElementById('angleC');
+  const altitude= document.getElementById('altitude');
 
-    // Nettoyer un peu : si c'est NaN, on met undefined
+  const calcBtn = document.getElementById('calculateBtn');
+  const clrBtn  = document.getElementById('clearBtn');
+
+  // Vérifions que les boutons existent
+  if (!calcBtn || !clrBtn) {
+    console.error("Boutons introuvables dans le DOM !");
+    return;
+  }
+
+  // On définit la fonction calculate()
+  function calculate() {
+    // (Ici, on récupère les valeurs et on calcule)
+    let a = parseFloat(coteA.value);
+    let b = parseFloat(coteB.value);
+    let c = parseFloat(coteC.value);
+    let AB = parseFloat(angleB.value);
+    let AC = parseFloat(angleC.value);
+
     if (isNaN(a)) a = undefined;
     if (isNaN(b)) b = undefined;
     if (isNaN(c)) c = undefined;
-    if (isNaN(angleB)) angleB = undefined;
-    if (isNaN(angleC)) angleC = undefined;
+    if (isNaN(AB)) AB = undefined;
+    if (isNaN(AC)) AC = undefined;
 
-    // 1) On connaît b et c => calculer a, angles B et C
+    // Exemple : calcul côté a si b et c connus
     if (b !== undefined && c !== undefined) {
-        const aCalc = Math.sqrt(b*b + c*c); // hypothénuse
-        document.getElementById('coteA').value = aCalc.toFixed(2);
-        a = aCalc;
-
-        // angles
-        const B = Math.atan(b / c) * (180 / Math.PI);
-        document.getElementById('angleB').value = B.toFixed(2);
-        const C = 90 - B;
-        document.getElementById('angleC').value = C.toFixed(2);
+      const aCalc = Math.sqrt(b * b + c * c);
+      coteA.value = aCalc.toFixed(2);
+      // etc.
     }
-    // 2) On connaît a (hypoténuse) et b => calculer c, angles
-    else if (a !== undefined && b !== undefined) {
-        // c = sqrt(a² - b²) si a > b
-        if (b < a) {
-            const cCalc = Math.sqrt(a*a - b*b);
-            document.getElementById('coteC').value = cCalc.toFixed(2);
-            c = cCalc;
-
-            const B = Math.asin(b / a) * (180 / Math.PI);
-            document.getElementById('angleB').value = B.toFixed(2);
-            document.getElementById('angleC').value = (90 - B).toFixed(2);
-        } else {
-            alert("Erreur : b ne peut pas être supérieur à a (hypoténuse) !");
-        }
-    }
-    // 3) On connaît a (hypoténuse) et c => calculer b, angles
-    else if (a !== undefined && c !== undefined) {
-        if (c < a) {
-            const bCalc = Math.sqrt(a*a - c*c);
-            document.getElementById('coteB').value = bCalc.toFixed(2);
-            b = bCalc;
-
-            const C = Math.asin(c / a) * (180 / Math.PI);
-            document.getElementById('angleC').value = C.toFixed(2);
-            document.getElementById('angleB').value = (90 - C).toFixed(2);
-        } else {
-            alert("Erreur : c ne peut pas être supérieur à a (hypoténuse) !");
-        }
-    }
-    // 4) On connaît a et angleB => on calcule b et c
-    else if (a !== undefined && angleB !== undefined) {
-        const bCalc = a * Math.sin(angleB * (Math.PI / 180));
-        document.getElementById('coteB').value = bCalc.toFixed(2);
-        b = bCalc;
-
-        const cCalc = a * Math.cos(angleB * (Math.PI / 180));
-        document.getElementById('coteC').value = cCalc.toFixed(2);
-        c = cCalc;
-
-        document.getElementById('angleC').value = (90 - angleB).toFixed(2);
-    }
-    // 5) On connaît a et angleC => on calcule b et c
-    else if (a !== undefined && angleC !== undefined) {
-        const cCalc = a * Math.sin(angleC * (Math.PI / 180));
-        document.getElementById('coteC').value = cCalc.toFixed(2);
-        c = cCalc;
-
-        const bCalc = a * Math.cos(angleC * (Math.PI / 180));
-        document.getElementById('coteB').value = bCalc.toFixed(2);
-        b = bCalc;
-
-        document.getElementById('angleB').value = (90 - angleC).toFixed(2);
-    }
-    // 6) On connaît b et angleB => a = b / sin(B), c = ?
-    else if (b !== undefined && angleB !== undefined) {
-        const aCalc = b / Math.sin(angleB * (Math.PI / 180));
-        document.getElementById('coteA').value = aCalc.toFixed(2);
-        a = aCalc;
-
-        const cCalc = Math.sqrt(aCalc*aCalc - b*b); 
-        document.getElementById('coteC').value = cCalc.toFixed(2);
-        c = cCalc;
-
-        document.getElementById('angleC').value = (90 - angleB).toFixed(2);
-    }
-    // etc. => Tu peux continuer les autres combinaisons…
-
-    else {
-        alert("Veuillez remplir au moins deux champs appropriés (dont la cohérence).");
-    }
-
-    // === CALCUL DE L'ALTITUDE (depuis l'angle droit A) ===
-    //   altitude = (b*c)/a  si a, b, c valides
+    
+    // On calcule l'altitude si a, b, c existants
     if (a > 0 && b > 0 && c > 0) {
-        const altitude = (b * c) / a;
-        document.getElementById('altitude').value = altitude.toFixed(2);
+      altitude.value = ((b * c) / a).toFixed(2);
     }
-}
+  }
 
-function clearForm() {
+  // On définit la fonction clearForm()
+  function clearForm() {
     document.getElementById('triangleForm').reset();
-    // on reset aussi l'altitude
-    document.getElementById('altitude').value = '';
-}
+    altitude.value = '';
+  }
+
+  // On “connecte” nos fonctions aux clics sur les boutons
+  calcBtn.addEventListener('click', calculate);
+  clrBtn.addEventListener('click', clearForm);
+});
