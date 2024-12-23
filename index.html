@@ -13,16 +13,26 @@
         <form id="triangleForm">
             <label for="coteA">Côté a (Hypoténuse) :</label>
             <input type="number" id="coteA" name="coteA" class="wide-input">
+            
             <label for="coteB">Côté b :</label>
             <input type="number" id="coteB" name="coteB" class="wide-input">
+            
             <label for="coteC">Côté c :</label>
             <input type="number" id="coteC" name="coteC" class="wide-input">
+            
             <label for="angleA">Angle A (90°) :</label>
             <input type="number" id="angleA" name="angleA" value="90" readonly class="wide-input">
+            
             <label for="angleB">Angle B :</label>
             <input type="number" id="angleB" name="angleB" class="wide-input">
+            
             <label for="angleC">Angle C :</label>
             <input type="number" id="angleC" name="angleC" class="wide-input">
+
+            <!-- Nouveau champ pour l'altitude -->
+            <label for="altitude">Altitude (depuis l'angle A) :</label>
+            <input type="number" id="altitude" name="altitude" class="wide-input" readonly>
+
             <div class="button-container">
                 <button type="button" onclick="calculate()">Calculer</button>
                 <button type="button" onclick="clearForm()">Effacer</button>
